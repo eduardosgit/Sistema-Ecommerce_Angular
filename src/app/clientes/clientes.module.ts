@@ -12,7 +12,7 @@ import { ClienteCrudComponent } from './cliente-crud/cliente-crud.component';
     CommonModule, clientesRouting, FormsModule
   ],
   //declarations: [ClienteListComponent], [ClienteFormComponent], 
-  declarations: [ClienteFormComponent, ClienteCrudComponent], 
+  declarations: [ClienteListComponent, ClienteFormComponent, ClienteCrudComponent], 
   providers: [ClientesService]
 })
 export class ClientesModule { }

@@ -4,12 +4,13 @@ import { CategoriaListComponent } from './categoria-list/categoria-list.componen
 import { categoriasRouting } from './categoria.routing';
 import { FormsModule } from '@angular/forms';
 import { CategoriasService } from './categorias.service';
+import { CategoriaCrudComponent } from './categoria-crud/categoria-crud.component';
 
 @NgModule({
   imports: [
     CommonModule, categoriasRouting, FormsModule
   ],
-  declarations: [CategoriaListComponent],
+  declarations: [CategoriaListComponent, CategoriaCrudComponent],
   providers: [CategoriasService]
 })
 export class CategoriasModule { }

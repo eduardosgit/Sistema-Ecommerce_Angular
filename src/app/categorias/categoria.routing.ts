@@ -1,10 +1,13 @@
 import { Routes, RouterModule } from '@angular/router';
-import { CategoriaListComponent } from './categoria-list/categoria-list.component';
+import { CategoriaCrudComponent } from './categoria-crud/categoria-crud.component';
 
 const CATEGORIA_ROUTES: Routes = [
     { 
         path: '',
-        component: CategoriaListComponent
+        component: CategoriaCrudComponent
+    },
+    {
+        path: ':id', component: CategoriaCrudComponent
     }
 ];
 

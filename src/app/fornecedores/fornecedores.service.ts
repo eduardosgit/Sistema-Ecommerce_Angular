@@ -1,49 +1,49 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Categoria } from './categoria';
+import { Observable } from 'rxjs/Observable';
+import { Fornecedor } from './fornecedor';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class CategoriasService {
+export class FornecedoresService {
 
-  private url: string = 'http://localhost:8080/categorias';
+  private url: string = 'http://localhost:8080/fornecedores';
 
-  categoriasChanged = new EventEmitter<Observable<Categoria[]>>();
+  fornecedoresChanged = new EventEmitter<Observable<Fornecedor[]>>();
 
   constructor(private http: Http) { }
 
   get(id: number) {
     return this.getAll()
-      .map((list: any) => list.find(categoria => categoria.codigo == id))
+      .map((list: any) => list.find(fornecedor => fornecedor.codigo == id))
       .catch(this.handleError);
   }
 
-  getAll(): Observable<Categoria[]> {
+  getAll(): Observable<Fornecedor[]> {
     return this.http.get(this.url).map(res => res.json()).catch(this.handleError);
   }
 
-  add(categoria: Categoria) {
-    return this.http.post(this.url, JSON.stringify(categoria), { headers: this.getHeaders() })
+  add(fornecedor: Fornecedor) {
+    return this.http.post(this.url, JSON.stringify(fornecedor), { headers: this.getHeaders() })
       //.map(res => res.json())
-      .do(data => this.categoriasChanged.emit(this.getAll()))
+      .do(data => this.fornecedoresChanged.emit(this.getAll()))
       .catch(this.handleError);
   }
 
   remove(id: number) {
     return this.http.delete(this.getUrl(id), { headers: this.getHeaders() })
       .map(res => res.json())
-      .do(data => this.categoriasChanged.emit(this.getAll()))
+      .do(data => this.fornecedoresChanged.emit(this.getAll()))
       .catch(this.handleError);
   }
 
-  update(categoria: Categoria) {
-    return this.http.put(this.url, JSON.stringify(categoria), { headers: this.getHeaders() })
+  update(fornecedor: Fornecedor) {
+    return this.http.put(this.url, JSON.stringify(fornecedor), { headers: this.getHeaders() })
       //.map(res => res.json().data)
-      .do(data => this.categoriasChanged.emit(this.getAll()))
+      .do(data => this.fornecedoresChanged.emit(this.getAll()))
       .catch(this.handleError);
   }
 
@@ -62,4 +62,5 @@ export class CategoriasService {
     console.error('Ocorreu um erro', erro);
     return Observable.throw(erro);
   }
+
 }

@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let clienteTabela of clientes | filter:searchText">
+    <tr *ngFor="let clienteTabela of clientes">
       <a [routerLink]="[clienteTabela.codigo]"><td>{{clienteTabela.codigo}}</td></a>     
       <td>{{clienteTabela.nome}}</td>
       <td>{{clienteTabela.cargo}}</td>
@@ -30,6 +30,8 @@
   </tbody>
 </table>  
 
+<!--
 <span [hidden]="(clientes | filter: searchText).length != 0">
   Nada foi encontrado. 
 </span>
+-->

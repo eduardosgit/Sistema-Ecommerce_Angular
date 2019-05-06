@@ -20,6 +20,10 @@ const routes: Routes = [
     {
         path: 'produtos',
         loadChildren: 'app/produtos/produtos.module#ProdutosModule'
+    },
+    {
+        path: 'fornecedores',
+        loadChildren: 'app/fornecedores/fornecedores.module#FornecedoresModule'
     }
 ];
 
