@@ -36,7 +36,7 @@ export class ClientesService {
 
   remove(id: number) {
     return this.http.delete(this.getUrl(id), {headers: this.getHeaders()})
-      //.map(res => res.json())
+      .map(res => res.json())
       .do(data => this.clientesChanged.emit(this.getAll()))
       .catch(this.handleError);
   }

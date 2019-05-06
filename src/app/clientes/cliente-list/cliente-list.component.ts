@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../Cliente';
 import { ClientesModule } from '../clientes.module';
 import { ClientesService } from '../clientes.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-cliente-list',
@@ -15,9 +16,15 @@ export class ClienteListComponent implements OnInit {
   clientes: Cliente[] = [];
 
   ngOnInit() {
-    this.clienteService.getAll().subscribe(data => this.clientes = data, err => {
-      alert('Aconteceu um erro.');
-    });
+    this.clienteService.getAll()
+    .subscribe(data => this.clientes = data, 
+      err => alert('Aconteceu um erro.'. +err)
+    );
+    this.clienteService.clientesChanged.subscribe(
+      (Observable: any) => Observable.subscribe(
+        data => this.clientes = data
+      )
+    );
   }    
 
       /* [{

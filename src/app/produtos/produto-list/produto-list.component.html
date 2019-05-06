@@ -1,0 +1,16 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>C&oacute;digo</th>
+      <th>Nome</th>
+      <th>Preço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produtoTabela of produtos">
+      <a [routerLink]="[produtoTabela.codigo]"><td>{{produtoTabela.codigo}}</td></a>     
+      <td>{{produtoTabela.nome}}</td>
+      <td>{{produtoTabela.preco}}</td>
+    </tr>
+  </tbody>
+</table>

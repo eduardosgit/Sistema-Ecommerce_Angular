@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClientesService } from '../clientes/clientes.service';
-import { Cliente } from '../clientes/cliente';
+import { ClientesService } from '../clientes.service';
+import { Cliente } from '../cliente';
 
 @Component({
   selector: 'app-cliente-form',
@@ -38,7 +38,11 @@ export class ClienteFormComponent implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate
+    this.voltar();
+  }
+
+  voltar() {
+    this.router.navigate(['/clientes']);
   }
 
   salvar() {
@@ -49,6 +53,7 @@ export class ClienteFormComponent implements OnInit {
       result = this.clienteService.update(this.cliente);
     }
     this.novo();
+    this.voltar();
     result.subscribe(data => alert('sucesso' +data),
     err => {
       alert("An error occurred. "+err);
@@ -62,11 +67,12 @@ export class ClienteFormComponent implements OnInit {
       if(confirm("Deseja excluir o cliente "+ this.cliente.nome +" ?")) {
         this.clienteService.remove(this.cliente.codigo)
         .subscribe(
-          data => this.novo,
+          data => alert('Cliente removido '+data),
           err => {
             alert("Cliente não removido.");
-          }
-        );
+          });
+        this.novo();
+        this.voltar();  
       }
     }
   }

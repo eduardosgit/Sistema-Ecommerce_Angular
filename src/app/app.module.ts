@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { RoutingModule } from './app.router';
-import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { ClienteFormComponent } from './clientes/cliente-form/cliente-form.component';
 //import { AlertaService } from './alerta.service';
 
 @NgModule({

@@ -1,0 +1,86 @@
+<div class="tab-content" id="clienteTabContent">
+  <div class="tab-pane fade show active" id="cadastro" role="tabpanel" aria-labelledby="cadastro-tab">
+    <br>
+    <button type="button" (click)="novo()" class="btn btn-primary">Novo</button>
+    <button type="button" (click)="salvar()" class="btn btn-success">Salvar</button>
+    <button type="button" (click)="excluir()" class="btn btn-danger">Excluir</button>
+    <button type="button" (click)="pesquisar()" class="btn btn-warning">Pesquisar</button>
+    <br> <br>
+    <form class="was-validated form-row" #cadastro="ngForm" (ngSubmit)="Salvar()">
+      <div class="col-md-1 mb-3">
+        <label for="codigo">C&oacute;digo</label>
+        <input type="text" [(ngModel)]="cliente.codigo" class="form-control" disabled name="codigo">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="nome">Nome</label>
+        <input type="text" [(ngModel)]="cliente.nome" class="form-control is-valid" #nome="ngModel" name="nome" minlength="5" required>
+        <div [hidden]="nome.valid" class="invalid-feedback">
+          <p>Nome incompleto</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="cargo">Cargo</label>
+        <input type="text" [(ngModel)]="cliente.cargo" class="form-control is-valid" #cargo="ngModel" name="cargo" required>
+        <div [hidden]="cargo.valid" class="invalid-feedback">
+          <p>Cargo é obrigatório</p>
+        </div>
+      </div>
+
+      <div class="col-md-5 mb-3">
+        <label for="endereco">Endere&ccedil;o</label>
+        <input type="text" [(ngModel)]="cliente.endereco" class="form-control is-valid" #endereco="ngModel" name="endereco" required>
+        <div [hidden]="endereco.valid" class="invalid-feedback">
+          <p>Endereço é obrigatório</p>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label for="cidade">Cidade</label>
+        <input type="text" [(ngModel)]="cliente.cidade" class="form-control is-valid" #cidade="ngModel" name="cidade" required>
+        <div [hidden]="cidade.valid" class="invalid-feedback">
+          <p>Cidade é obrigatório</p>
+        </div>
+      </div>
+
+      <div class="col-md-2 mb-2">
+        <label for="cep">CEP</label>
+        <input type="text" [(ngModel)]="cliente.cep" class="form-control is-valid" #cep="ngModel" name="cep" required>
+        <div [hidden]="cep.valid" class="invalid-feedback">
+          <p>Cep é obrigatório</p>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label for="pais">Pa&iacute;s</label>
+        <input type="text" [(ngModel)]="cliente.pais" class="form-control is-valid" #pais="ngModel" name="pais" required>
+        <div [hidden]="pais.valid" class="invalid-feedback">
+          <p>País é obrigatório</p>
+        </div>
+      </div>
+
+      <div class="col-md-2 mb-2">
+        <label for="telefone">Telefone</label>
+        <input type="text" [(ngModel)]="cliente.telefone" class="form-control is-valid" #telefone="ngModel" name="telefone" required>
+        <div [hidden]="telefone.valid" class="invalid-feedback">
+          <p>Telefone é obrigatório</p>                    
+        </div>
+      </div>
+
+      <div class="col-md-2 mb-2">
+        <label for="fax">Fax</label>
+        <input type="text" [(ngModel)]="cliente.fax" class="form-control is-valid" #fax="ngModel" name="fax" required>
+        <div [hidden]="fax.valid" class="invalid-feedback">
+          <p>Fax é obrigatório</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <button class="btn btn-success" type="submit" [disabled]="cadastro.form.invalid">Enviar</button>
+        <button class="btn btn-danger" type="button" [hidden]="isNew" (click)="excluir()">Excluir</button>
+        <button class="btn btn-warning" type="button" (click)="cancelar()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>

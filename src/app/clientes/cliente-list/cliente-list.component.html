@@ -1,3 +1,6 @@
+<input type="text" [(ngModel)]="searchText" class="form-control" placeholder="O que você está procurando?" />
+<br />
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -13,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let clienteTabela of clientes">
+    <tr *ngFor="let clienteTabela of clientes | filter:searchText">
       <a [routerLink]="[clienteTabela.codigo]"><td>{{clienteTabela.codigo}}</td></a>     
       <td>{{clienteTabela.nome}}</td>
       <td>{{clienteTabela.cargo}}</td>
@@ -26,3 +29,7 @@
     </tr>
   </tbody>
 </table>  
+
+<span [hidden]="(clientes | filter: searchText).length != 0">
+  Nada foi encontrado. 
+</span>
