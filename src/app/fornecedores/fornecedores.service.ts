@@ -34,7 +34,7 @@ export class FornecedoresService {
   }
 
   remove(id: number) {
-    return this.http.delete(this.getUrl(id), { headers: this.getHeaders() })
+    return this.http.delete(this.url+"/"+id, { headers: this.getHeaders() })
       .map(res => res.json())
       .do(data => this.fornecedoresChanged.emit(this.getAll()))
       .catch(this.handleError);
@@ -53,9 +53,9 @@ export class FornecedoresService {
     return headers;
   }
 
-  private getUrl(id: number) {
+  /*private getUrl(id: number) {
     return '${this.url}/${id}';
-  }
+  }*/
 
   private handleError(error: any) {
     let erro = error.message || 'Server error';

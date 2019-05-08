@@ -3,8 +3,7 @@ import { CategoriaCrudComponent } from './categoria-crud/categoria-crud.componen
 
 const CATEGORIA_ROUTES: Routes = [
     { 
-        path: '',
-        component: CategoriaCrudComponent
+        path: '', component: CategoriaCrudComponent
     },
     {
         path: ':id', component: CategoriaCrudComponent

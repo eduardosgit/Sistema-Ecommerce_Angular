@@ -26,6 +26,7 @@ export class ClienteFormComponent implements OnInit {
           this.isNew = false;
           this.clienteIndex = +params['id'];
           this.clienteService.get(this.clienteIndex).subscribe(data => this.cliente = data);
+          
         } else {
           this.isNew = true;
         }
@@ -54,7 +55,7 @@ export class ClienteFormComponent implements OnInit {
     }
     this.novo();
     this.voltar();
-    result.subscribe(data => alert('sucesso' +data),
+    result.subscribe(data => alert('Sucesso:' +data),
     err => {
       alert("An error occurred. "+err);
     });
@@ -69,7 +70,7 @@ export class ClienteFormComponent implements OnInit {
         .subscribe(
           data => alert('Cliente removido '+data),
           err => {
-            alert("Cliente não removido.");
+            alert("Erro ao tentar remover o cliente. "+err);
           });
         this.novo();
         this.voltar();  

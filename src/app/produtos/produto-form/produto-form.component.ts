@@ -38,7 +38,11 @@ export class ProdutoFormComponent implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate
+    this.voltar();
+  }
+
+  voltar() {
+    this.router.navigate(['/produtos']);
   }
 
   salvar() {
@@ -49,7 +53,8 @@ export class ProdutoFormComponent implements OnInit {
       result = this.produtoService.update(this.produto);
     }
     this.novo();
-    result.subscribe(data => alert('sucesso' + data),
+    this.voltar();
+    result.subscribe(data => alert('Sucesso' + data),
       err => {
         alert("An error occurred. " + err);
       });
@@ -59,14 +64,15 @@ export class ProdutoFormComponent implements OnInit {
     if (this.produto.codigo == null) {
       alert("Selecione algum produto");
     } else {
-      if (confirm("Deseja excluir o cliente " + this.produto.nome + " ?")) {
+      if (confirm("Deseja excluir o produto " + this.produto.nome + " ?")) {
         this.produtoService.remove(this.produto.codigo)
           .subscribe(
-            data => this.novo,
+            data => alert('Produto removido ' + data),
             err => {
-              alert("Produto não removido.");
-            }
-          );
+              alert("Erro ao tentar remover o produto. "+err);
+          });
+        this.novo();
+        this.voltar();  
       }
     }
   }

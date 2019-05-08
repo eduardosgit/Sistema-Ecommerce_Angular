@@ -54,7 +54,7 @@ export class FornecedorFormComponent implements OnInit {
     }
     this.novo();
     this.voltar();
-    result.subscribe(data => alert('sucesso' + data),
+    result.subscribe(data => alert('Sucesso' + data),
       err => {
         alert("An error occurred. " + err);
       });
@@ -69,7 +69,7 @@ export class FornecedorFormComponent implements OnInit {
           .subscribe(
             data => alert('Fornecedor removido ' + data),
             err => {
-              alert("Fornecedor não removido.");
+              alert("Erro ao tentar remover o fornecedor. "+err);
             });
         this.novo();
         this.voltar();

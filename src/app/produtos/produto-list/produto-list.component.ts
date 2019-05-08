@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from '../Produto';
 import { ProdutosModule } from '../produtos.module';
 import { ProdutosService } from '../produtos.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-produto-list',
@@ -15,9 +16,15 @@ export class ProdutoListComponent implements OnInit {
   produtos: Produto[] = [];
 
   ngOnInit() {
-    this.produtoService.getAll().subscribe(data => this.produtos = data, err => {
-      alert('Aconteceu um erro.');
-    });
-  }
+    this.produtoService.getAll()
+      .subscribe(data => this.produtos = data,
+        err => alert('Aconteceu um erro.' + err)
+      );
+    this.produtoService.produtosChanged.subscribe(
+      (Observable: any) => Observable.subscribe(
+        data => this.produtos = data
+      )
+    );
+  }    
 
 }

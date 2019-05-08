@@ -1,11 +1,12 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Categoria } from './categoria';
+import { Observable } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Observable';
+
 
 @Injectable()
 export class CategoriasService {
@@ -34,7 +35,7 @@ export class CategoriasService {
   }
 
   remove(id: number) {
-    return this.http.delete(this.getUrl(id), { headers: this.getHeaders() })
+    return this.http.delete(this.url+"/"+id, { headers: this.getHeaders() })
       .map(res => res.json())
       .do(data => this.categoriasChanged.emit(this.getAll()))
       .catch(this.handleError);
@@ -53,9 +54,9 @@ export class CategoriasService {
     return headers;
   }
 
-  private getUrl(id: number) {
+  /*private getUrl(id: number) {
     return '${this.url}/${id}';
-  }
+  }*/
 
   private handleError(error: any) {
     let erro = error.message || 'Server error';

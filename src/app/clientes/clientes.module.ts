@@ -11,7 +11,6 @@ import { ClienteCrudComponent } from './cliente-crud/cliente-crud.component';
   imports: [
     CommonModule, clientesRouting, FormsModule
   ],
-  //declarations: [ClienteListComponent], [ClienteFormComponent], 
   declarations: [ClienteListComponent, ClienteFormComponent, ClienteCrudComponent], 
   providers: [ClientesService]
 })
