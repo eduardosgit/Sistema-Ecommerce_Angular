@@ -1,4 +1,9 @@
-Back-End do projeto: https://github.com/eduardosgit/PDS_SistemaEcommerce
+Back-End do projeto: https://github.com/eduardosgit/Sistema-Ecommerce_Spring
+
+# Teste para implementação de login:
+Login: user@gmail.com
+Senha: 123456
+	
 
 # SistemaEcommerceCli
 
