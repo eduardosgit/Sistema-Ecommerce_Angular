@@ -4,6 +4,7 @@ import { ClientesModule } from '../clientes.module';
 import { ClientesService } from '../clientes.service';
 import { Observable } from 'rxjs/Observable';
 
+
 @Component({
   selector: 'app-cliente-list',
   templateUrl: './cliente-list.component.html',
@@ -20,13 +21,16 @@ export class ClienteListComponent implements OnInit {
     .subscribe(data => this.clientes = data, 
       err => alert('Aconteceu um erro.' +err)
     );
+    
     this.clienteService.clientesChanged.subscribe(
       (Observable: any) => Observable.subscribe(
         data => this.clientes = data
       )
     );
+    
   }    
 
+  
       /* [{
       'codigo': 1,
       'nome': 'Carlos',
